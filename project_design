@@ -1,0 +1,24 @@
+What we are doing: A compilation of files on various people and organizations in the Avatar world, as written by the Dai Li.
+      (Circa book 2, probably) This will be done in MongoDB.
+      
+People will have:
+-	Known allies (organizations and people)
+-	Known enemies (organizations and people)
+-	Known abilities
+-	Last known whereabouts
+-	Brief description of the person’s personality (if known) and appearance
+-	Brief history of the person
+Organizations will have:
+-	Known Allies (organizations and people)
+-	Known enemies (organizations and people)
+-	Known subordinates/members (people)
+-	Brief history of organization’s goals and movements
+-	Speculation on possible future moves
+
+Names of allies and enemies will (hopefully) link to the files on them. There will be a search option for looking up by name. 
+
+Duties will be assigned as follows (subject to change):
+	Courtney: general research of Avatar world; writing descriptions, histories, and speculations; making HTML look nice;
+            general database creation/file insertion; server-side database stuff
+	Nathan: general research of Avatar world; documenting allies, enemies, and members; making javascript work correctly(links); 
+            general database creation/file insertion; search options
