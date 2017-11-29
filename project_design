@@ -5,13 +5,14 @@ People will have:
 -	Known allies (organizations and people)
 -	Known enemies (organizations and people)
 -	Known abilities
+-	Organizations they are a part of
 -	Last known whereabouts
 -	Brief description of the person’s personality (if known) and appearance
 -	Brief history of the person
 Organizations will have:
 -	Known Allies (organizations and people)
 -	Known enemies (organizations and people)
--	Known subordinates/members (people)
+-	Parent organizations
 -	Brief history of organization’s goals and movements
 -	Speculation on possible future moves
 
