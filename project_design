@@ -16,9 +16,18 @@ Organizations will have:
 -	Speculation on possible future moves
 
 Names of allies and enemies will (hopefully) link to the files on them. There will be a search option for looking up by name. 
-
-Duties will be assigned as follows (subject to change):
-	Courtney: general research of Avatar world; writing descriptions, histories, and speculations; making HTML look nice;
-            general database creation/file insertion; server-side database stuff
-	Nathan: general research of Avatar world; documenting allies, enemies, and members; making javascript work correctly(links); 
-            general database creation/file insertion; search options
+If time allows, add login functionality (maybe even admin priviliges?)
+	    
+Nathan: 
+	Search options from home page : 5
+	Advanced search options : 12
+	Allies, enemies, and members research : 5
+	Site navigation : 15
+	Client-side API requests : 13
+	
+Courtney: 
+	Writing descriptions, histories, and speculations : 15
+	Writeup/insertion of database files : 5
+	Server-side handling of requests : 15
+	HTML/CSS stylization : 15
+	
