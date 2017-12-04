@@ -1,17 +1,24 @@
+<!doctype html>
 <html>
 <head>
     <base href="/">
-    <title>Digital Display Garden</title>
+    <title>Dai Li Database</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAADD7VOBrB5nSjgiJZOgbvHtENTPkwK9g&callback=initMap"
-            type="text/javascript"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script src="daiLi.js"></script>
 </head>
 <!--<body style="color:#3d3d66;background-color:#add0f3">-->
 <body style="background-color:white ">
-<app>Loading...</app>
+    <div id="daiLi">
+        <input>
+        <button>Search</button>
+    </div>
+    <div id="results" ng-app="search">
+        <div id="people" ng-controller="searchCtrl">
+            <p>{{test}}</p>
+        </div>
+        <div id="organizations"></div>
+    </div>
 </body>
 </html>
