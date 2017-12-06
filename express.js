@@ -2,9 +2,19 @@ var express = require('express');
 var mongodb = require('mongodb');
 Promise = require('bluebird');
 var using = Promise.using;
+
 const bodyParser = require('body-parser');
 
 // run().catch(error => console.error(error));
+
+
+app.use(express.static(__dirname + '/public'));
+//app.use('/person', person);
+
+app.get("/person", function(req, res){
+    res.sendFile(__dirname + '/public/person.html');
+    }
+);
 
 
 
