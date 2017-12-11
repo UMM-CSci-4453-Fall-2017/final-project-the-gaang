@@ -1,6 +1,6 @@
 var express = require('express');
 mysql=require('mysql');
-var creds=require('./credentials.json');
+var creds= require('./credentials.json');
 //var mongo = require('mongodb');
 Promise = require('bluebird');
 var using = Promise.using;
@@ -10,7 +10,7 @@ app = express();
 port = process.env.PORT || 1337;
 
 
-creds.host='ids.morris.umn.edu';
+creds.host='localhost';
 
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
@@ -49,7 +49,7 @@ app.get("/entity/:id", function(req, res){
     var sql = 'Select * from ' + db + '.entities;';
     query(sql).then(function(results){ 
         res.send(results); 
-        console.log(results); 
+        //console.log(results);
         endPool;
     });
 });
