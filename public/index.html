@@ -19,9 +19,15 @@
             <table>
                 <tr>
                     <th>Name</th>
+                    <th>Abilities</th>
+                    <th>Location</th>
+                    <th>Description</th>
                 </tr>
                 <tr ng-repeat="entity in allEntities">
                     <td>{{entity.name}}</td>
+                    <td>{{entity.abilities}}</td>
+                    <td>{{entity.location}}</td>
+                    <td>{{entity.description}}</td>
                 </tr>
             </table>
         </div>
