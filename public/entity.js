@@ -3,12 +3,13 @@ angular.module("entity", [])
     .factory("entityApi", entityApi)
     .constant('apiUrl', 'http://localhost:1337');
 
-function entityCtrl($scope, $location, entityApi){
+function entityCtrl($scope, $location, $window, entityApi){
     $scope.test = "testing 123";
     $scope.processUrl = processUrl;
     $scope.idEntity;
     $scope.aliases = [];
     $scope.relationships = [];
+    $scope.clickEntity = clickEntity;
 
     function processUrl(){
         var url = $location.absUrl();
@@ -36,11 +37,16 @@ function entityCtrl($scope, $location, entityApi){
 
         entityApi.getAliases(id)
             .success(function(data){
-                $scope.relationships = data;
-                console.log(data);
+                $scope.aliases = data;
+                console.log();
             }).error(function(){
                 console.log("Failed to retrieve alias information");
             });
+    }
+
+    function clickEntity(id){
+        var host = $window.location.host;
+        $window.location.href = "http://" + host + "/entity/" + id;
     }
 
     processUrl();

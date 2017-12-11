@@ -21,25 +21,25 @@
                 <div style="background-color: #FFD747;" >
                     <br>
                     <h2 style="text-align:center"> {{idEntity.name}}</h2>
-                    <div style="margin-left:20em;">
+                    <div style="margin-left:20em; margin-right: 20em">
                         <b>Abilities:</b> {{idEntity.abilities}}<br>
                         <b>Location:</b> {{idEntity.location}}<br>
                         <b>Description:</b> {{idEntity.description}}<br>
                         <b>History: </b>{{idEntity.history}}
                     </div> <!-- of description -->
                     <br>
-                    <div style="margin-left:20em;">
+                    <div style="margin-left:20em;; margin-right: 20em">
                         <b>{{idEntity.name}} is considered a(n):</b>
-                        <ul >
-                            <li ng-repeat="relationship in relationships">{{relationship.relation}} of {{relationship.name}}</li>
-                        </ul>
+                        <div ng-repeat="relationship in relationships" ng-click="clickEntity(relationship.id)" >
+                            <li>{{relationship.relation}} of {{relationship.name}}</li>
+                        </div>
                     </div> <!-- of relationships -->
-                    <div style="margin-left:20em;">
+                    <div style="margin-left:20em;; margin-right: 20em">
                         <br>
                         <b>Known aliases:</b>
-                        <ul>
-                            <li ng-repeat="alias in aliases">{{alias.alias}}</li>
-                        </ul> <!-- of alias list -->
+                        <div ng-repeat="alias in aliases">
+                            <li>{{alias.alias}}</li> <!-- of alias list -->
+                        </div>
                         <br>
                     </div> <!-- of aliases -->
                 </div>  <!-- of body style-->
