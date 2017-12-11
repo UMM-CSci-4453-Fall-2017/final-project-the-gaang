@@ -10,7 +10,7 @@ app = express();
 port = process.env.PORT || 1337;
 
 
-creds.host='localhost';
+creds.host='ids';
 
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
@@ -46,12 +46,22 @@ app.use(express.urlencoded()); // not entirely sure about this part here
 
 app.get("/entity/:id", function(req, res){
     var id = req.params.id;
-    var sql = 'Select * from ' + db + '.entities;';
-    query(sql).then(function(results){ 
-        res.send(results); 
-        //console.log(results);
-        endPool;
-    });
+
+    if(id == "all") {
+        var sql = 'Select * from ' + db + '.entities;';
+        query(sql).then(function (results) {
+            res.send(results);
+            //console.log(results);
+            endPool;
+        });
+    } else {
+        var sql = 'Select * from ' + db + '.entities where id=' + id + ';';
+        query(sql).then(function (results) {
+            res.send(results);
+            //console.log(results);
+            endPool;
+        });
+    }
 });
 
 
