@@ -44,12 +44,12 @@ var getDatabase = function(){
 app.use(express.static(__dirname+ '/public'));
 app.use(express.urlencoded()); // not entirely sure about this part here
 
-app.get('/person', function(req, res){
-    res.sendFile(__dirname + '/public/person.html');
+app.get('/entity*', function(req, res){
+    res.sendFile(__dirname + '/public/entity.html');
 });
 
 
-app.get("/entity/:id", function(req, res){
+app.get("/getEntity/:id", function(req, res){
     var id = req.params.id;
     if(id == "all"){
         var sql = 'Select * from entities;';
