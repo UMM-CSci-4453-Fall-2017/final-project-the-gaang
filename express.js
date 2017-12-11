@@ -44,6 +44,11 @@ var getDatabase = function(){
 app.use(express.static(__dirname+ '/public'));
 app.use(express.urlencoded()); // not entirely sure about this part here
 
+app.get('/person', function(req, res){
+    res.sendFile(__dirname + '/public/person.html');
+});
+
+
 app.get("/entity/:id", function(req, res){
     var id = req.params.id;
 
