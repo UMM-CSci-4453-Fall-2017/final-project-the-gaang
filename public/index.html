@@ -31,20 +31,8 @@
                             <b>History: </b>{{entity.history}}
                         </div> <!-- of description -->
                         <br>
-                        <div style="margin-left:20em;">
-                            <b>{{entity.name}} is considered a(n):</b>
-                            <ul ng-repeat="relationships in filteredrelations">
-                                <li>{{relationships.relation}} of {{relationships.toWhom}}</li>
-                            </ul>
-                        </div> <!-- of relationships -->
-                        <div style="margin-left:20em;">
-                            <b>Known aliases:</b>
-                                <ul ng-repeat="aliases in filteredaliases" >
-                                    <li>{{aliases.alias}}</li>
-                                </ul> <!-- of alias list -->
-                        </div> <!-- of aliases -->
-                    </div>  <!-- of body style-->
-                </div>
+                    </div>  <!-- of body style ng-repeat -->
+                </div> <!-- of body style color height-->
             </div> <!-- of ng-controller-->
         </div> <!-- of daiLi app-->
     </body>

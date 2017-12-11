@@ -60,21 +60,37 @@ app.get("/getEntity/:id", function(req, res){
     query(sql)
         .then(function(results){
             res.send(results);
-            console.log(results);
-            endPool;
+           // console.log(results);
+           // endPool;
     });
 });
 
 app.get("/getAliases/:id", function(req, res){
+    var id = req.params.id;
+    var sql = 'select * from '+db+'.aliases where subjectID='+id+';';
 
+    query(sql)
+        .then(function(results){
+            res.send(results);
+            console.log(results);
+           // endPool();
+        });
 });
 
-app.get("getRelationships/:id", function(req, res){
+app.get("/getRelationships/:id", function(req, res){
+    var id = req.params.id;
+    var sql = 'select relationships.relation, entities.name, entities.id' +
+        ' from '+db+'.relationships inner join '+db+'.entities on ' +
+        'relationships.toWhom=entities.id where relationships.subjectID='+id+';';
 
+    query(sql)
+        .then(function(results){
+            res.send(results);
+            console.log(results);
+          //  endPool();
+        });
 });
 
 
-
-//TODO write all of the routes/
 
 app.listen(port);

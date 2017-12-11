@@ -5,9 +5,10 @@ angular.module("entity", [])
 
 function entityCtrl($scope, $location, entityApi){
     $scope.test = "testing 123";
+    $scope.processUrl = processUrl;
     $scope.idEntity;
-    $scope.aliases;
-    $scope.relationships;
+    $scope.aliases = [];
+    $scope.relationships = [];
 
     function processUrl(){
         var url = $location.absUrl();
@@ -19,7 +20,27 @@ function entityCtrl($scope, $location, entityApi){
                 $scope.idEntity = data[0];
             }).error(function(){
                 console.log("Failed to retrieve entity information");
-        })
+        });
+
+        entityApi.getRelationships(id)
+            .success(function(data){
+                $scope.relationships = [];
+
+                for (i = 0; i < data.length; i++){
+                    $scope.relationships[i] = data[i];
+                }
+                console.log($scope.relationships);
+            }).error(function(){
+                console.log("Failed to retrieve relationship information");
+            });
+
+        entityApi.getAliases(id)
+            .success(function(data){
+                $scope.relationships = data;
+                console.log(data);
+            }).error(function(){
+                console.log("Failed to retrieve alias information");
+            });
     }
 
     processUrl();
