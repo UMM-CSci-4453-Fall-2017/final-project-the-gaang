@@ -1,6 +1,6 @@
 var express = require('express');
 mysql=require('mysql');
-var creds=require('./credentials.json');
+var creds= require('./credentials.json');
 //var mongo = require('mongodb');
 Promise = require('bluebird');
 var using = Promise.using;
@@ -10,7 +10,7 @@ app = express();
 port = process.env.PORT || 1337;
 
 
-creds.host='ids.morris.umn.edu';
+creds.host='ids';
 
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
@@ -44,17 +44,26 @@ var getDatabase = function(){
 app.use(express.static(__dirname+ '/public'));
 app.use(express.urlencoded()); // not entirely sure about this part here
 
+app.get('/person', function(req, res){
+    res.sendFile(__dirname + '/public/person.html');
+});
+
+
 app.get("/entity/:id", function(req, res){
     var id = req.params.id;
-    var sql = 'Select entities.*, relationships.relation, relationships.toWhom, aliases.alias from entities inner join relationships on entities.id=relationships.subjectID inner join aliases on aliases.alias=entities.id where entities.id=' + id+ ';';  // will give the ID number of the relation, not the name. We want the name, still working on that bit
+    if(id == "all"){
+        var sql = 'Select * from entities;';
+    } else {
+        var sql = 'Select entities.*, relationships.relation, relationships.toWhom, aliases.alias from entities inner join relationships on entities.id=relationships.subjectID inner join aliases on aliases.alias=entities.id where entities.id=' + id+ ';';  // will give the ID number of the relation, not the name. We want the name, still working on that bit
+    }
+    
     getDatabase()
         .then(query(sql)
             .then(function(results){ 
                 res.send(results); 
-                console.log(results); 
+           //     console.log(results); 
                 endPool;
           }));
-        
 });
 
 
