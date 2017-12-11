@@ -9,32 +9,41 @@
     <script src="daiLi.js"></script>
 </head>
 
-<!--<body style="color:#3d3d66;background-color:#add0f3">-->
-<body style="background-color:white ">
-<div id="app" ng-app="daiLi">
-<div ng-controller="daiLiCtrl">
-    <div id="daiLi" >
-        <input id="searchTerm" ng-keyup="$event.keyCode === 13 && filterEntities($event)">
-        <button ng-click="filterEntities($event);">Search</button>
-    </div>
-    <div id="entities">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Abilities</th>
-                <th>Location</th>
-                <th>Description</th>
-            </tr>
-            <tr ng-repeat="entity in filteredEntities">
-                <td>{{entity.name}}</td>
-                <td>{{entity.abilities}}</td>
-                <td>{{entity.location}}</td>
-                <td>{{entity.description}}</td>
-            </tr>
-        </table>
-    </div>
-</div>
-</div>
-</body>
-
+    <body style="background-color:0c4613; height:100%">
+        <div id="app" ng-app="daiLi" >
+            <div ng-controller="daiLiCtrl" >
+                <div style="background-color:0c4613">
+                    <h1 style="text-align:center; color:white">Dai Li Database</h1>
+                    <div id="daiLi" style="margin-left:10em;">
+                        <input id="searchTerm" ng-keyup="$event.keyCode === 13 && filterEntities($event)">
+                        <button ng-click="filterEntities($event);">Search</button>
+                    </div>
+                    <br>
+                </div>  <!-- of of header style-->
+                <div style="background-color: FFD747;height:100%">
+                    <br>
+                    <h2 style="text-align:center">{{entity.name}}</h2>
+                    <div style="margin-left:20em;">
+                        Abilities: {{entity.abilities}}<br>
+                        Location: {{entity.location}}<br>
+                        Description: {{entity.description}}<br>
+                        History: {{entity.history}}
+                    </div> <!-- of description -->
+                    <br>
+                    <div style="margin-left:20em;">
+                        {{entity.name}} is considered a(n):
+                        <ul ng-repeat="relationships in filteredrelations">
+                            <li>{{relationships.relation}} of {{relationships.toWhom}}</li>
+                        </ul>
+                    </div> <!-- of relationships -->
+                    <div style="margin-left:20em;">
+                        Known aliases: 
+                            <ul ng-repeat="aliases in filteredaliases" >
+                                <li>{{aliases.alias}}</li>
+                            </ul> <!-- of alias list -->
+                    </div> <!-- of aliases -->
+                </div>  <!-- of body style-->
+            </div> <!-- of ng-controller-->
+        </div> <!-- of daiLi app-->
+    </body>
 </html>
