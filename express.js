@@ -10,7 +10,7 @@ app = express();
 port = process.env.PORT || 1337;
 
 
-creds.host='ids';
+creds.host='ids.morris.umn.edu';
 
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
@@ -52,18 +52,25 @@ app.get('/entity*', function(req, res){
 app.get("/getEntity/:id", function(req, res){
     var id = req.params.id;
     if(id == "all"){
-        var sql = 'Select * from entities;';
+        var sql = 'Select * from '+db+'.entities;';
     } else {
-        var sql = 'Select entities.*, relationships.relation, relationships.toWhom, aliases.alias from entities inner join relationships on entities.id=relationships.subjectID inner join aliases on aliases.alias=entities.id where entities.id=' + id+ ';';  // will give the ID number of the relation, not the name. We want the name, still working on that bit
+        var sql = 'Select * from '+db+'.entities where id='+id+';';
     }
-    
-    getDatabase()
-        .then(query(sql)
-            .then(function(results){ 
-                res.send(results); 
-           //     console.log(results); 
-                endPool;
-          }));
+
+    query(sql)
+        .then(function(results){
+            res.send(results);
+            console.log(results);
+            endPool;
+    });
+});
+
+app.get("/getAliases/:id", function(req, res){
+
+});
+
+app.get("getRelationships/:id", function(req, res){
+
 });
 
 

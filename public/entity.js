@@ -6,6 +6,8 @@ angular.module("entity", [])
 function entityCtrl($scope, $location, entityApi){
     $scope.test = "testing 123";
     $scope.idEntity;
+    $scope.aliases;
+    $scope.relationships;
 
     function processUrl(){
         var url = $location.absUrl();
@@ -27,6 +29,14 @@ function entityApi($http, apiUrl){
     return {
         getEntity: function(id){
             var url = apiUrl + "/getEntity/" + id;
+            return $http.get(url);
+        },
+        getAliases: function (id) {
+            var url = apiUrl + "/getAliases/" + id;
+            return $http.get(url);
+        },
+        getRelationships: function (id) {
+            var url = apiUrl + "/getRelationships/" + id;
             return $http.get(url);
         }
     }
