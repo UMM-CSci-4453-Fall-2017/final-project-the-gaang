@@ -48,6 +48,10 @@ app.get('/entity*', function(req, res){
     res.sendFile(__dirname + '/public/entity.html');
 });
 
+app.get('/newEntry', function(req, res){
+    res.sendFile(__dirname + '/public/newEntry.html')
+})
+
 
 app.get("/getEntity/:id", function(req, res){
     var id = req.params.id;
