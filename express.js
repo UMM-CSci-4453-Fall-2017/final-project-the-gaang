@@ -46,12 +46,15 @@ app.use(express.urlencoded()); // not entirely sure about this part here
 
 app.get("/entity/:id", function(req, res){
     var id = req.params.id;
-    var sql = 'Select * from ' + db + '.entities;';
-    query(sql).then(function(results){ 
-        res.send(results); 
-        console.log(results); 
-        endPool;
-    });
+    var sql = 'Select entities.*, relationships.relation, relationships.toWhom, aliases.alias from entities inner join relationships on entities.id=relationships.subjectID inner join aliases on aliases.alias=entities.id where entities.id=' + id+ ';';  // will give the ID number of the relation, not the name. We want the name, still working on that bit
+    getDatabase()
+        .then(query(sql)
+            .then(function(results){ 
+                res.send(results); 
+                console.log(results); 
+                endPool;
+          }));
+        
 });
 
 
