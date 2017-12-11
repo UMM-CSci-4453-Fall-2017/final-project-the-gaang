@@ -1,20 +1,14 @@
 What we are doing: A compilation of files on various people and organizations in the Avatar world, as written by the Dai Li.
-      (Circa book 2, probably) This will be done in MongoDB.
+      (Circa book 2, probably) This will be done in mysql.
       
-People will have:
--	Known allies (organizations and people)
--	Known enemies (organizations and people)
+People and organizations will have:
+-	a unique ID
 -	Known abilities
--	Organizations they are a part of
 -	Last known whereabouts
 -	Brief description of the person’s personality (if known) and appearance
 -	Brief history of the person
-Organizations will have:
--	Known Allies (organizations and people)
--	Known enemies (organizations and people)
--	Parent organizations
--	Brief history of organization’s goals and movements
--	Speculation on possible future moves
+-	Known allies, enemies, employers, and other relationships
+-	Known aliases
 
 Names of allies and enemies will (hopefully) link to the files on them. There will be a search option for looking up by name. 
 If time allows, add login functionality (maybe even admin priviliges?)
