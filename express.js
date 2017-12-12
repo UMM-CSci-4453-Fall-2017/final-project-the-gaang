@@ -48,6 +48,10 @@ app.get('/entity*', function(req, res){
     res.sendFile(__dirname + '/public/entity.html');
 });
 
+app.get('/newEntry', function(req, res){
+    res.sendFile(__dirname + '/public/newEntry.html')
+});
+
 
 app.get("/getEntity/:id", function(req, res){
     var id = req.params.id;
@@ -77,6 +81,31 @@ app.get("/getAliases/:id", function(req, res){
         });
 });
 
+app.get("/submit", function(req, res){
+    var name = '"' + req.param('name') + '"';
+    var history = '"' + req.param('history') + '"';
+    var desc = '"' + req.param('description') + '"';
+    var location = '"' + req.param('location') + '"';
+    var abilities = '"' + req.param('abilities') + '"';
+
+    var sql = "insert into "+db+".entities (name, history, description, location, abilities) values ("+name+", "+history+", "+
+        desc+", "+location+", "+abilities+");";
+
+    query(sql).then(function(result){
+        res.send(result);
+    });
+});
+
+app.get("/submitAlias", function(req, res){
+    var id = req.param('id');
+    var alias = '"' + req.param('alias') + '"';
+    var sql = "insert into "+db+".aliases values ("+id+", "+alias+");";
+
+    query(sql).then(function(results){
+        res.send(results);
+    });
+});
+
 app.get("/getRelationships/:id", function(req, res){
     var id = req.params.id;
     var sql = 'select relationships.relation, entities.name, entities.id' +
@@ -91,6 +120,21 @@ app.get("/getRelationships/:id", function(req, res){
         });
 });
 
+app.get("/submitRelationship", function (req, res) {
+    var id = req.param('id');
+    var verb = '"' + req.param('verb') + '"';
+    var target = '"' + req.param('target') + '"';
+    var findTargetId = "select id from "+db+".entities where name="+target+" limit 1;";
 
+    //TODO: consider checking that this id exists
+    query(findTargetId).then(function(result){
+        var targetId = result[0].id;
+        var insertSql = "insert into "+db+".relationships values ("+id+", "+verb+", "+targetId+");";
+
+        query(insertSql).then(function(results){
+            res.send(results);
+        })
+    })
+});
 
 app.listen(port);
