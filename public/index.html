@@ -12,10 +12,40 @@
         <div id="app" ng-app="daiLi" >
             <div ng-controller="daiLiCtrl" >
                 <div style="background-color: #0c4613">
+
+                    <button ng-click="newEntry();">Add New Entry</button>
                     <h1 style="text-align:center; color:white; font-size: 300%"><b>Dai Li Database</b></h1>
-                    <div id="daiLi" style="margin-left:10em;">
-                        <input id="searchTerm" ng-keyup="$event.keyCode === 13 && filterEntities($event)">
-                        <button ng-click="filterEntities($event);">Search</button>
+                    <div style="margin-left:10em;">
+                        <input id="searchName" ng-keyup="$event.keyCode === 13 && filterEntities('name', 'searchName')">
+                        <button ng-click="filterEntities('name', 'searchName');">Add Name Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchAbilities" ng-keyup="$event.keyCode === 13 && filterEntities('abilities', 'searchAbilities')">
+                        <button ng-click="filterEntities('abilities', 'searchAbilities');">Add Ability Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchDesc" ng-keyup="$event.keyCode === 13 && filterEntities('description', 'searchDesc')">
+                        <button ng-click="filterEntities('description', 'searchDesc');">Add Description Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchLoc" ng-keyup="$event.keyCode === 13 && filterEntities('location', 'searchLoc')">
+                        <button ng-click="filterEntities('location', 'searchLoc');">Add Location Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchHist" ng-keyup="$event.keyCode === 13 && filterEntities('history', 'searchHist')">
+                        <button ng-click="filterEntities('history', 'searchHist');">Add History Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchAlias" ng-keyup="$event.keyCode === 13 && filterEntitiesAlias('searchAlias')">
+                        <button ng-click="filterEntitiesAlias('searchAlias');">Add Alias Filter</button>
+                    </div>
+                    <div style="margin-left:10em; color:white">
+                        Relation: <input id="searchVerb" ng-keyup="$event.keyCode === 13 && filterEntitiesRelation('searchRelatedTarget', 'searchVerb')">
+                        To: <input id="searchRelatedTarget" ng-keyup="$event.keyCode === 13 && filterEntitiesRelation('searchRelatedTarget', 'searchVerb')">
+                        <button style="color: black" ng-click="filterEntitiesRelation('searchRelatedTarget', 'searchVerb');">Add Related to Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <button ng-click="clearFilters();">Clear Filters</button>
                     </div>
                     <br>
                 </div>  <!-- of of header style-->
