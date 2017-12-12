@@ -78,7 +78,7 @@ function newEntryApi($http, apiUrl){
             return $http.get(url);
         },
         submitRelation: function(id, verb, target){
-            var url = apiUrl + "/submitRelationhip?id="+id+"&verb="+verb+"&target="+target;
+            var url = apiUrl + "/submitRelationship?id="+id+"&verb="+verb+"&target="+target;
             return $http.get(url);
         }
     }
