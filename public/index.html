@@ -34,6 +34,15 @@
                         <button ng-click="filterEntities('history', 'searchHist');">Add History Filter</button>
                     </div>
                     <div style="margin-left:10em;">
+                        <input id="searchAlias" ng-keyup="$event.keyCode === 13 && filterEntitiesAlias('searchAlias')">
+                        <button ng-click="filterEntitiesAlias('searchAlias');">Add Alias Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        Verb: <input id="searchVerb" ng-keyup="$event.keyCode === 13 && filterEntitiesRelation('searchRelatedTarget', 'searchVerb')">
+                        Subject: <input id="searchRelatedTarget" ng-keyup="$event.keyCode === 13 && filterEntitiesRelation('searchRelatedTarget', 'searchVerb')">
+                        <button ng-click="filterEntitiesRelation('searchRelatedTarget', 'searchVerb');">Add Related to Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
                         <button ng-click="clearFilters();">Clear Filters</button>
                     </div>
                     <br>

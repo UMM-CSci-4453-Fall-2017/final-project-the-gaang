@@ -13,7 +13,8 @@ function daiLiCtrl($scope, $window, daiLiApi){
     $scope.filterEntities = filterEntities;
     $scope.clickEntity = clickEntity;
     $scope.clearFilters = clearFilters;
-
+    $scope.filterEntitiesAlias = filterEntitiesAlias;
+    $scope.filterEntitiesRelation = filterEntitiesRelation;
 
     var loading = false;
     function isLoading(){
@@ -60,7 +61,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
                                 entity.relationships.push(
                                     {
                                         "relation": relationObj.relation,
-                                        "target": relationObj.toWhom
+                                        "target": relationObj.name
                                     });
                             });
 
@@ -79,43 +80,47 @@ function daiLiCtrl($scope, $window, daiLiApi){
     function filterEntities(searchField, elemID){
         var tempEnts = $scope.filteredEntities;
         $scope.filteredEntities = [];
-        var n = 0;
         var str = document.getElementById(elemID).value.toLowerCase();
 
         for(i = 0; i < tempEnts.length; i++){
             if (tempEnts[i][searchField].toLowerCase().includes(str)){
-                $scope.filteredEntities[n++] = tempEnts[i];
+                $scope.filteredEntities.push(tempEnts[i]);
             }
         }
     }
 
-    // function filterAliasEntities(searchField, elemID){
-    //     var tempEnts = $scope.filteredEntities;
-    //     $scope.filteredEntities = [];
-    //     var n = 0;
-    //     var searchTerm = document.getElementById(elemID).value.toLowerCase();
-    //
-    //     for(i = 0; i < tempEnts.length; i++){
-    //
-    //         if (tempEnts[i][searchField].indexOf(searchTerm) != -1){
-    //             $scope.filteredEntities[n++] = tempEnts[i];
-    //         }
-    //     }
-    // }
-    //
-    // function filterRelationEntities(elemID, verbElemId){
-    //     var tempEnts = $scope.filteredEntities;
-    //     $scope.filteredEntities = [];
-    //     var n = 0;
-    //     var searchTerm = document.getElementById(elemID).value.toLowerCase();
-    //     var verb = document.getElementById(verbElemId).value.toLowerCase();
-    //
-    //     for(i = 0; i < tempEnts.length; i++){
-    //         if (tempEnts[i].relations.indexOf(searchTerm) != -1){
-    //             $scope.filteredEntities[n++] = tempEnts[i];
-    //         }
-    //     }
-    // }
+    function filterEntitiesAlias(elemID){
+        var tempEnts = $scope.filteredEntities;
+        $scope.filteredEntities = [];
+        var searchTerm = document.getElementById(elemID).value.toLowerCase();
+
+        tempEnts.forEach(function(entity){
+           for (i = 0; i < entity.aliases.length; i++){
+               if (entity.aliases[i].toLowerCase().indexOf(searchTerm) != -1){
+                   $scope.filteredEntities.push(entity);
+                   break;
+               }
+           }
+        });
+    }
+
+    function filterEntitiesRelation(elemID, verbElemId){
+        var tempEnts = $scope.filteredEntities;
+        $scope.filteredEntities = [];
+        var searchTarget = document.getElementById(elemID).value.toLowerCase();
+        var verb = document.getElementById(verbElemId).value.toLowerCase();
+
+        for(var i = 0; i < tempEnts.length; i++){
+            var relations = tempEnts[i].relationships;
+            for(var j = 0; j < relations.length; j++){
+                if (relations[j].target.toLowerCase().indexOf(searchTarget) != -1
+                        && relations[j].relation.toLowerCase().indexOf(verb) != -1){
+                    $scope.filteredEntities.push(tempEnts[i]);
+                    break;
+                }
+            }
+        }
+    }
 
     function clickEntity(id){
         var host = $window.location.host;
