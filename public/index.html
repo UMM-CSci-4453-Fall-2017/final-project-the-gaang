@@ -13,9 +13,28 @@
             <div ng-controller="daiLiCtrl" >
                 <div style="background-color: #0c4613">
                     <h1 style="text-align:center; color:white"><b>Dai Li Database</b></h1>
-                    <div id="daiLi" style="margin-left:10em;">
-                        <input id="searchTerm" ng-keyup="$event.keyCode === 13 && filterEntities($event)">
-                        <button ng-click="filterEntities($event);">Search</button>
+                    <div style="margin-left:10em;">
+                        <input id="searchName" ng-keyup="$event.keyCode === 13 && filterEntities('name', 'searchName')">
+                        <button ng-click="filterEntities('name', 'searchName');">Add Name Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchAbilities" ng-keyup="$event.keyCode === 13 && filterEntities('abilities', 'searchAbilities')">
+                        <button ng-click="filterEntities('abilities', 'searchAbilities');">Add Ability Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchDesc" ng-keyup="$event.keyCode === 13 && filterEntities('description', 'searchDesc')">
+                        <button ng-click="filterEntities('description', 'searchDesc');">Add Description Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchLoc" ng-keyup="$event.keyCode === 13 && filterEntities('location', 'searchLoc')">
+                        <button ng-click="filterEntities('location', 'searchLoc');">Add Location Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <input id="searchHist" ng-keyup="$event.keyCode === 13 && filterEntities('history', 'searchHist')">
+                        <button ng-click="filterEntities('history', 'searchHist');">Add History Filter</button>
+                    </div>
+                    <div style="margin-left:10em;">
+                        <button ng-click="clearFilters();">Clear Filters</button>
                     </div>
                     <br>
                 </div>  <!-- of of header style-->

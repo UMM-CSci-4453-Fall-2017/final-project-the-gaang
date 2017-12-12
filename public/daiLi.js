@@ -12,6 +12,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
     $scope.filteredEntities = [];
     $scope.filterEntities = filterEntities;
     $scope.clickEntity = clickEntity;
+    $scope.clearFilters = clearFilters;
 
 
     var loading = false;
@@ -33,14 +34,15 @@ function daiLiCtrl($scope, $window, daiLiApi){
         })
     }
 
-    function filterEntities(){
+    function filterEntities(searchField, elemID){
+        var tempEnts = $scope.filteredEntities;
         $scope.filteredEntities = [];
         var n = 0;
-        var str = document.getElementById("searchTerm").value.toLowerCase();
+        var str = document.getElementById(elemID).value.toLowerCase();
 
-        for(i = 0; i < $scope.allEntities.length; i++){
-            if ($scope.allEntities[i].name.toLowerCase().includes(str)){
-                $scope.filteredEntities[n++] = $scope.allEntities[i];
+        for(i = 0; i < tempEnts.length; i++){
+            if (tempEnts[i][searchField].toLowerCase().includes(str)){
+                $scope.filteredEntities[n++] = tempEnts[i];
             }
         }
     }
@@ -48,6 +50,15 @@ function daiLiCtrl($scope, $window, daiLiApi){
     function clickEntity(id){
         var host = $window.location.host;
         $window.location.href = "http://" + host + "/entity/" + id;
+    }
+
+    function clearFilters(){
+        $scope.filteredEntities = $scope.allEntities;
+        document.getElementById("searchName").value = "";
+        document.getElementById("searchAbilities").value = "";
+        document.getElementById("searchDesc").value = "";
+        document.getElementById("searchLoc").value = "";
+        document.getElementById("searchHist").value = "";
     }
 
     getEntities();
