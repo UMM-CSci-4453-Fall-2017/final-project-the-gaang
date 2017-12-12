@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <base href="/entity">
+    <title>Entity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script src="entity.js"></script>
+</head>
+
+<body style="background-color:#0c4613; height:100%">
+    <div id="app" ng-app="entity" >
+        <div ng-controller="entityCtrl">
+            <div style="background-color: #0c4613">
+                <h1 style="text-align:center; color:white"><b>Dai Li Database</b></h1>
+                <br>
+            </div>  <!-- of of header style-->
+            <div style="background-color: #FFD747; height: 100%">
+                <div style="background-color: #FFD747;" >
+                    <br>
+                    <h2 style="text-align:center"> {{idEntity.name}}</h2>
+                    <div style="margin-left:20em; margin-right: 20em">
+                        <b>Abilities:</b> {{idEntity.abilities}}<br>
+                        <b>Location:</b> {{idEntity.location}}<br>
+                        <b>Description:</b> {{idEntity.description}}<br>
+                        <b>History: </b>{{idEntity.history}}
+                    </div> <!-- of description -->
+                    <br>
+                    <div style="margin-left:20em;; margin-right: 20em">
+                        <b>{{idEntity.name}} is considered a(n):</b>
+                        <div ng-repeat="relationship in relationships" ng-click="clickEntity(relationship.id)" >
+                            <li>{{relationship.relation}} of {{relationship.name}}</li>
+                        </div>
+                    </div> <!-- of relationships -->
+                    <div style="margin-left:20em;; margin-right: 20em">
+                        <br>
+                        <b>Known aliases:</b>
+                        <div ng-repeat="alias in aliases">
+                            <li>{{alias.alias}}</li> <!-- of alias list -->
+                        </div>
+                        <br>
+                    </div> <!-- of aliases -->
+                </div>  <!-- of body style-->
+            </div>
+        </div> <!-- of ng-controller-->
+    </div> <!-- of daiLi app-->
+</body>
+</html>

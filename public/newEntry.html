@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Entry</title>
+    <base href="/newEntry">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script src="newEntry.js"></script>
+</head>
+<body>
+<div ng-app="newEntry">
+<div ng-controller="newEntryCtrl">
+
+<h1>Add a New Entity to The Database</h1>
+
+<form>
+    Name:<br>
+    <input type="text" id="name"><br><br>
+
+    Location:<br>
+    <input type="text" id="location"><br><br>
+
+    Abilities:<br>
+    <input type="text" id="abilities"><br><br>
+
+    Description:<br>
+    <input type="text" id="description"><br><br>
+
+    History:<br>
+    <input type="text" id="history"><br><br>
+
+    Aliases:<br>
+    <div ng-repeat="alias in aliases">
+        <input type="text" class="aliasClass"><br>
+    </div>
+    <button ng-click="addAlias($event)">add another alias</button><br><br>
+
+    Relationships:<br>
+    <div ng-repeat="relation in relations">
+        Relationship: <input type="text" class="relationClass">
+        Person: <input type="text" class="personClass"><br>
+    </div>
+    <button ng-click="addRelation($event)">Add another relationship</button>
+
+
+</form>
+<br>
+<button ng-click="submit($event)">Submit</button>
+
+</div>
+</div>
+
+</body>
+</html>
