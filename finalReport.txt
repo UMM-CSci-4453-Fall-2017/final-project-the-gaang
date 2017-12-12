@@ -1,0 +1,18 @@
+Group Portion:
+Our project was to create a database for the Dai Li (the secret service of Ba Sing Se from the show Avatar: the Last Airbender)
+to contain and search through all of their data on various notable entities in the AtLA universe, both friendly and hostile.
+Our goal was to create an easy to use, intuitive interface as well as a robust, normalized database in MariaDB as the underlying 
+backbone of our data. We used 3 tables, one for entities as the "main" table, the other two table both reference the main one. 
+The main table is `entities`, with a an int primary key and information about that entity, another table is aliases with a subjectID 
+that is a foriegn key referencing `entities` and an alias for that entity, the last table is relationships which has essentially a 
+subject verb and object representing how the subject relates to the object and both subject and object are foriegn key constraints 
+referencing `entities`.
+
+We met all of goals layed the project structure, although we originally planned to use MongoDB and then switched to MariaDB after 
+some technical struggles. Our search function could be improved as well. It also would be good to add more data as the Dai Li are very 
+well informed in general. If we were to continue working on this project we would add login functionality, the ability to edit entries 
+in the database, skip empty fields when describing an entity, better checking and handling. A major thing would be refactoring to make 
+dramatically fewer calls to the server. 
+
+Overall this was a good experience in designing and implementing a usable product with realistic design requirements. We are 
+generally proud of our accomplishments in a relatively short time period.
