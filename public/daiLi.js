@@ -15,6 +15,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
     $scope.clearFilters = clearFilters;
     $scope.filterEntitiesAlias = filterEntitiesAlias;
     $scope.filterEntitiesRelation = filterEntitiesRelation;
+    $scope.newEntry = newEntry;
 
     var loading = false;
     function isLoading(){
@@ -134,6 +135,11 @@ function daiLiCtrl($scope, $window, daiLiApi){
         document.getElementById("searchDesc").value = "";
         document.getElementById("searchLoc").value = "";
         document.getElementById("searchHist").value = "";
+    }
+
+    function newEntry(){
+        var host = $window.location.host;
+        $window.location.href = "http://" + host + "/newEntry";
     }
 
     getEntities();
