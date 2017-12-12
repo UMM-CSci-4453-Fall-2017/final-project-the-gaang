@@ -3,12 +3,13 @@ angular.module('newEntry', [])
     .factory('newEntryApi', newEntryApi)
     .constant('apiUrl', 'http://localhost:1337');
 
-function newEntryCtrl($scope, newEntryApi){
+function newEntryCtrl($scope, $window, newEntryApi){
     $scope.submit = submit;
     $scope.aliases = [{}];
     $scope.addAlias = addAlias;
     $scope.relations = [{}];
     $scope.addRelation = addRelation;
+    $scope.home = home;
 
     /*
      * pulls the name, description, location, history, and abilities from the client
@@ -71,6 +72,11 @@ function newEntryCtrl($scope, newEntryApi){
     // sends a relationship to the server to be added to the database
     function addRelation(){
         $scope.relations[$scope.relations.length] = {};
+    }
+
+    function home(){
+        var host = $window.location.host;
+        $window.location.href = "http://" + host;
     }
 }
 

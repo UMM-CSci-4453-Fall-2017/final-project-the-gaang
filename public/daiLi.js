@@ -138,6 +138,9 @@ function daiLiCtrl($scope, $window, daiLiApi){
         document.getElementById("searchDesc").value = "";
         document.getElementById("searchLoc").value = "";
         document.getElementById("searchHist").value = "";
+        document.getElementById("searchAlias").value = "";
+        document.getElementById("searchVerb").value = "";
+        document.getElementById("searchRelatedTarget").value = "";
     }
 
     function newEntry(){
