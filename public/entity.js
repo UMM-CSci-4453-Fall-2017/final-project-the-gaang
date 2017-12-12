@@ -11,6 +11,10 @@ function entityCtrl($scope, $location, $window, entityApi){
     $scope.relationships = [];
     $scope.clickEntity = clickEntity;
 
+    /*
+     * pulls info from the URL and uses it to ask the server for the entity
+     * info, the entity relationships, and the entity aliases
+     */
     function processUrl(){
         var url = $location.absUrl();
         var index = url.lastIndexOf("/");
@@ -44,6 +48,7 @@ function entityCtrl($scope, $location, $window, entityApi){
             });
     }
 
+    // when an entity is clicked (in the relations area), go to that entity's page
     function clickEntity(id){
         var host = $window.location.host;
         $window.location.href = "http://" + host + "/entity/" + id;

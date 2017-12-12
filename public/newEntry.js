@@ -10,6 +10,11 @@ function newEntryCtrl($scope, newEntryApi){
     $scope.relations = [{}];
     $scope.addRelation = addRelation;
 
+    /*
+     * pulls the name, description, location, history, and abilities from the client
+     * and send them to the server to be added to the database
+     *
+     */
     function submit(){
         var name = document.getElementById("name").value;
         var description = document.getElementById("description").value;
@@ -58,9 +63,12 @@ function newEntryCtrl($scope, newEntryApi){
 
     }
 
+    // sends an alias to the server to be added to the database
     function addAlias(){
         $scope.aliases[$scope.aliases.length] = {};
     }
+
+    // sends a relationship to the server to be added to the database
     function addRelation(){
         $scope.relations[$scope.relations.length] = {};
     }
