@@ -12,8 +12,9 @@
         <div id="app" ng-app="daiLi" >
             <div ng-controller="daiLiCtrl" >
                 <div style="background-color: #0c4613">
+
                     <button ng-click="newEntry();">Add New Entry</button>
-                    <h1 style="text-align:center; color:white"><b>Dai Li Database</b></h1>
+                    <h1 style="text-align:center; color:white; font-size: 300%"><b>Dai Li Database</b></h1>
                     <div style="margin-left:10em;">
                         <input id="searchName" ng-keyup="$event.keyCode === 13 && filterEntities('name', 'searchName')">
                         <button ng-click="filterEntities('name', 'searchName');">Add Name Filter</button>

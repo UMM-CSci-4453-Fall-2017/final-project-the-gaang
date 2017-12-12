@@ -23,6 +23,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
     }
 
 
+    // asks the server for all the entities in the database
     function getEntities(){
         daiLiApi.getEnts()
             .success(function(data){
@@ -80,6 +81,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
 
     function filterEntities(searchField, elemID){
         var tempEnts = $scope.filteredEntities;
+
         $scope.filteredEntities = [];
         var str = document.getElementById(elemID).value.toLowerCase();
 
@@ -123,6 +125,7 @@ function daiLiCtrl($scope, $window, daiLiApi){
         }
     }
 
+    // when an entity is clicked, go to that entity's page
     function clickEntity(id){
         var host = $window.location.host;
         $window.location.href = "http://" + host + "/entity/" + id;
