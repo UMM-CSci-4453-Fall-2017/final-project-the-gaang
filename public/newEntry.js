@@ -3,13 +3,19 @@ angular.module('newEntry', [])
     .factory('newEntryApi', newEntryApi)
     .constant('apiUrl', 'http://localhost:1337');
 
-function newEntryCtrl($scope, newEntryApi){
+function newEntryCtrl($scope, $window, newEntryApi){
     $scope.submit = submit;
     $scope.aliases = [{}];
     $scope.addAlias = addAlias;
     $scope.relations = [{}];
     $scope.addRelation = addRelation;
+    $scope.home = home;
 
+    /*
+     * pulls the name, description, location, history, and abilities from the client
+     * and send them to the server to be added to the database
+     *
+     */
     function submit(){
         var name = document.getElementById("name").value;
         var description = document.getElementById("description").value;
@@ -58,11 +64,19 @@ function newEntryCtrl($scope, newEntryApi){
 
     }
 
+    // sends an alias to the server to be added to the database
     function addAlias(){
         $scope.aliases[$scope.aliases.length] = {};
     }
+
+    // sends a relationship to the server to be added to the database
     function addRelation(){
         $scope.relations[$scope.relations.length] = {};
+    }
+
+    function home(){
+        var host = $window.location.host;
+        $window.location.href = "http://" + host;
     }
 }
 

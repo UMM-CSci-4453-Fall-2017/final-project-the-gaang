@@ -9,48 +9,54 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
     <script src="newEntry.js"></script>
 </head>
-<body>
-<div ng-app="newEntry">
-<div ng-controller="newEntryCtrl">
+<body style="background-color:#0c4613; height:100%">
+    <div ng-app="newEntry">
+        <div ng-controller="newEntryCtrl">
+            <div style="background-color: #0c4613">
+                <button style="margin-top: 1em; margin-left: 2em" ng-click="home();">Home</button>
+                <h1 style="text-align:center; color:white; font-size: 300%"><b>Dai Li Database</b></h1>
+                <br>
+            </div>
+            <div style="background-color: #FFD747; height: 100%">
+                <h1 style="text-align: center">Add a New Entity to The Database</h1>
 
-<h1>Add a New Entity to The Database</h1>
+                <form style="margin-left:20em">
+                    Name:<br>
+                    <input type="text" id="name"><br><br>
 
-<form>
-    Name:<br>
-    <input type="text" id="name"><br><br>
+                    Location:<br>
+                    <input type="text" id="location"><br><br>
 
-    Location:<br>
-    <input type="text" id="location"><br><br>
+                    Abilities:<br>
+                    <input type="text" id="abilities"><br><br>
 
-    Abilities:<br>
-    <input type="text" id="abilities"><br><br>
+                    Description:<br>
+                    <input type="text" id="description"><br><br>
 
-    Description:<br>
-    <input type="text" id="description"><br><br>
+                    History:<br>
+                    <input type="text" id="history"><br><br>
 
-    History:<br>
-    <input type="text" id="history"><br><br>
+                    Aliases:<br>
+                    <div ng-repeat="alias in aliases">
+                        <input type="text" class="aliasClass"><br>
+                    </div>
+                    <button ng-click="addAlias($event)">add another alias</button><br><br>
 
-    Aliases:<br>
-    <div ng-repeat="alias in aliases">
-        <input type="text" class="aliasClass"><br>
+                    Relationships:<br>
+                    <div ng-repeat="relation in relations">
+                        Relationship: <input type="text" class="relationClass">
+                        Person: <input type="text" class="personClass"><br>
+                    </div>
+                    <button ng-click="addRelation($event)">Add another relationship</button>
+
+
+                </form>
+                <br><br>
+                <button ng-click="submit($event)" style="margin-left:30em">Submit</button>
+                <br><br><br>
+            </div>
+        </div>
     </div>
-    <button ng-click="addAlias($event)">add another alias</button><br><br>
-
-    Relationships:<br>
-    <div ng-repeat="relation in relations">
-        Relationship: <input type="text" class="relationClass">
-        Person: <input type="text" class="personClass"><br>
-    </div>
-    <button ng-click="addRelation($event)">Add another relationship</button>
-
-
-</form>
-<br>
-<button ng-click="submit($event)">Submit</button>
-
-</div>
-</div>
 
 </body>
 </html>
