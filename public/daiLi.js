@@ -3,6 +3,7 @@ angular.module('daiLi', [])
     .factory('daiLiApi', daiLiApi)
     .constant('apiUrl', 'http://localhost:1337');
 
+
 function daiLiCtrl($scope, $window, daiLiApi){
     $scope.test = "testing 123...";
     $scope.isLoading = isLoading;
@@ -12,10 +13,12 @@ function daiLiCtrl($scope, $window, daiLiApi){
     $scope.filterEntities = filterEntities;
     $scope.clickEntity = clickEntity;
 
+
     var loading = false;
     function isLoading(){
         return loading;
     }
+
 
     function getEntities(){
         daiLiApi.getEnts()
