@@ -2,10 +2,10 @@ var express = require('express');
 
 mysql=require('mysql');
 var creds= require('./credentials.json');
-//var mongo = require('mongodb');
 Promise = require('bluebird');
 var using = Promise.using;
-//const bodyParser = require('body-parser');
+app = express();
+port = process.env.PORT || 1337;
 
 
 creds.host='ids.morris.umn.edu';
